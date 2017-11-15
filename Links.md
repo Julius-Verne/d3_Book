@@ -7,6 +7,7 @@
 
 ## Some Links
   [D3 Official Page](https://d3js.org/)
+  
   [Interactive Data Visualization for the Web Github](https://github.com/alignedleft)
 
 
