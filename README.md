@@ -21,17 +21,25 @@ D3 is great but having more options never killed anyone, this could work in case
 
 ### Easy Charts
 [DataWrapper](https://www.datawrapper.de/gallery) : Create viz online and publish it anywhere
+
 [Flot](http://www.flotcharts.org/) :  
+
 [Peity](http://benpickles.github.io/peity/) : Makes very small visualizations. Kind of cute.
-[Timeline.js](https://timeline.knightlab.com/) : Creates Timelines with little effor.
+
+[Timeline.js](https://timeline.knightlab.com/) : Creates Timelines with little effort.
+
 
 ### Graph Visualization
 [Arbor.js]()
+
 [Cytoscape.js]()
+
 [Sigma.js]()
 
 ### Geo-Mapping
 [Kartograph](http://kartograph.org/showcase/clustering/) : A framework that creates beautiful maps.
+
 [Leaflet](http://leafletjs.com/) : You can use this tool to create geomapping viz with D3. *Keep that in mind!*
+
 [Polymaps](http://polymaps.org/) : A great tool also created by Bostock. Nevertheless using D3 + the [d3-tile-plugin](https://github.com/d3/d3-tile) can have better results.
 
