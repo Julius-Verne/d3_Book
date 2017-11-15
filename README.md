@@ -15,6 +15,20 @@ Let's get started!
 [D3 Official Page](https://d3js.org/)
   
 [Interactive Data Visualization for the Web Github](https://github.com/alignedleft)
+
+## D3 Plugins
+[Crossfilter]()
+
+[Cubism](http://square.github.io/cubism/)
+
+[d3-annotation](http://d3-annotation.susielu.com/) - Implements visual annotations
+
+[d3-context-menu](https://github.com/patorjk/d3-context-menu) - Adds Contextual Menus
+
+[d3.sketchy](https://github.com/sebastian-meier/d3.sketchy) - Makes your graphs look hand-drawn.
+
+[Firespray]() - Super fast library for streaming data.
+
   
 ## Alternatives to D3
 D3 is great but having more options never killed anyone, this could work in case you need to work with older browsers, need a more private way to store your data or a more exploratory to play with graphs without the commitment D3 requires.
