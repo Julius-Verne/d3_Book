@@ -33,5 +33,5 @@ D3 is great but having more options never killed anyone, this could work in case
 ### Geo-Mapping
 [Kartograph](http://kartograph.org/showcase/clustering/) : A framework that creates beautiful maps.
 [Leaflet](http://leafletjs.com/) : You can use this tool to create geomapping viz with D3. *Keep that in mind!*
-[Polymaps](http://polymaps.org/) : A great tool also created by Bostock. Nevertheless using D3 + the d3-tile-plugin can have better results.
+[Polymaps](http://polymaps.org/) : A great tool also created by Bostock. Nevertheless using D3 + the [d3-tile-plugin](https://github.com/d3/d3-tile) can have better results.
 
