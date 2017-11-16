@@ -1,4 +1,9 @@
-var dataset = [1,2,5,7,4,14];
+var dataset = []
+
+for (var i = 0; i < 25; i++) {
+  dataset.push(Math.floor((Math.random() * 200) + 50));
+}
+
 //Loading CSV
 /*
   Loading CSV data
@@ -20,6 +25,7 @@ d3.csv("food.csv", rowConverter, function(data) {
 });
 
 */
+
 //Handling CSV
 /*
   Handling asynchronous calls
@@ -43,6 +49,7 @@ d3.csv("food.csv", rowConverter, function(data) {
     //Here you can use the data you saved on the dataset variable to access the information more easily.
   }
 */
+
 //Loading JSON
 /*
 d3.json("waterfallVelocities.json", function(data){
@@ -52,15 +59,14 @@ console.log(data);
 
 //d3.select("body").append("p").text("New Paragraph!");
 
-d3.select("body").selectAll("p")
+d3.select("body").selectAll("div")
       .data(dataset)
       .enter()
-      .append("p")
-      .text(function(d) { return d;})
-      .style("color", function(d){
-        if(d > 6){
-          return "red";
-        } else {
-          return "blue";
-        }
+      .append("div")
+      .attr("class", "bar")
+      .style('height', function(d) {
+        return d + "px";
+      })
+      .style('background-color', function(d){
+        return "rgba(255,"+ d/4 +","+ (d/4)*5 +", 1.0)";
       });
