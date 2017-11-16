@@ -13,6 +13,8 @@ Let's get started!
 
 ## Some Links
 [D3 Official Page](https://d3js.org/)
+
+[D3 API Docs](https://github.com/d3/d3/blob/master/API.md)
   
 [Interactive Data Visualization for the Web Github](https://github.com/alignedleft)
 
