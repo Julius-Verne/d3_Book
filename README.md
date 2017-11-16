@@ -18,6 +18,8 @@ Let's get started!
   
 [Interactive Data Visualization for the Web Github](https://github.com/alignedleft)
 
+[Mr. Data Converter:](https://shancarter.github.io/mr-data-converter/)  Convertes data from one type to the other.
+
 ## D3 Plugins
 [Crossfilter]()
 
