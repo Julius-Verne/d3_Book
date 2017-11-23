@@ -33,6 +33,8 @@ Let's get started!
 
 [Firespray]() - Super fast library for streaming data.
 
+[SVG Attributes](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute) - Better safe than sorry!
+
   
 ## Alternatives to D3
 D3 is great but having more options never killed anyone, this could work in case you need to work with older browsers, need a more private way to store your data or a more exploratory to play with graphs without the commitment D3 requires.
