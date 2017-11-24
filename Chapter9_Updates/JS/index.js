@@ -8,7 +8,7 @@ Lets Begin >:D
 var dataset = []
 
 for (var i = 0; i < 30; i++) {
-  var num = Math.floor((Math.random() * 400) + 50);
+  var num = Math.floor((Math.random() * 400) + 100);
   dataset.push(num);
 };
 
@@ -20,15 +20,12 @@ var xAxis,yAxis,xScale,yScale;
 
 yScale= d3.scaleLinear()
     .domain([
-      d3.min(dataset,
-        function (d) {
-          return d - 20;
-        }),
+        0,
       d3.max(dataset,
         function (d) {
-          return d;
+          return d+25;
         })])
-    .range([0,h]);
+    .range([h,0]);
 
 var xScale = d3.scaleBand()
     .domain(d3.range(dataset.length))
@@ -83,17 +80,57 @@ svg.selectAll('text')
     .attr('fill', '#fafafa')
     .attr('text-anchor', 'middle');
 
-/*
-svg.append('g')
-    .attr('class', 'axis')
-    .attr('transform', 'translate(0,'+ ( h ) +')')
-    .call(xAxis);
-*/
 svg.append('g')
   .attr('class', 'axis')
   .attr('transform', 'translate('+(0)+',0)')
   .call(yAxis);
 
+/*function Update() {
+  xScale.domain(d3.range(dataset.length));
+
+  yScale.domain([0, d3.max(dataset, function (d) {
+    return d+25;
+  })]);
+
+  svg.selectAll('rect')
+    .data(dataset)
+    .transition()
+    .duration(1000)
+    .ease(d3.easeElasticOut)
+    .attr('y', function (d) {
+      return h-yScale(d);
+    })
+    .attr('x', function (d, i) {
+      return xScale(i);
+    })
+    .attr('width', xScale.bandwidth())
+    .attr('height', function (d) {
+      return yScale(d)+5;
+    });
+
+    svg.selectAll('text')
+    .data(dataset)
+    .transition()
+    .delay(function (d,i) {
+      return i/dataset.length * 1000;
+    })
+    .duration(1000)
+    .ease(d3.easeElasticOut)
+    .text(function (d) {
+      return Math.round(yScale(d));
+    })
+    .attr('x', function (d, i) {
+      return xScale(i) + (xScale.bandwidth()/2);
+    })
+    .attr('y', function (d) {
+      return (h-yScale(d))+15;
+    });
+
+    svg.select('.y-axis')
+    .transition()
+    .duration(1000)
+    .call(yAxis);
+}
 
 d3.select('p')
   .on('click', function () {
@@ -104,41 +141,85 @@ d3.select('p')
       dataset.push(num);
     };
 
-    svg.selectAll('rect')
-      .data(dataset)
-      .transition()
-      .delay(function (d,i) {
-        return i/dataset.length * 1000;
-      })
-      .duration(1000)
-      .ease(d3.easeElasticOut)
-      .attr('y', function (d) {
-        return h-yScale(d);
-      })
-      .attr('x', function (d, i) {
-        return xScale(i);
-      })
-      .attr('width', xScale.bandwidth())
-      .attr('height', function (d) {
-        return yScale(d)+5;
-      })
-
-      svg.selectAll('text')
-      .data(dataset)
-      .transition()
-      .delay(function (d,i) {
-        return i/dataset.length * 1000;
-      })
-      .duration(1000)
-      .ease(d3.easeElasticOut)
-      .text(function (d) {
-        return Math.round(yScale(d));
-      })
-      .attr('x', function (d, i) {
-        return xScale(i) + (xScale.bandwidth()/2);
-      })
-      .attr('y', function (d) {
-        return (h-yScale(d))+15;
-      })
+    Update();
 
   });
+*/
+d3.select('button')
+  .on('click', function () {
+
+    var newBar = Math.floor((Math.random() * 400) + 50);
+    dataset.push(newBar);
+
+    xScale.domain(d3.range(dataset.length));
+    yScale.domain([0, d3.max(dataset, function (d) {
+      return d+25;
+    })]);
+
+    var bars = svg.selectAll('rect').data(dataset);
+
+    bars.enter()
+    .append('rect')
+    .attr('y', function (d) {
+      return h-yScale(d);
+    })
+    .attr('x', function (d, i) {
+      return w+margin.right;
+    })
+    .attr('width', xScale.bandwidth())
+    .attr('height', function (d) {
+      return yScale(d)+5;
+    })
+    .attr('class', 'bar')
+    .merge(bars)
+   .transition()
+   .duration(1000)
+   .ease(d3.easeElasticOut)
+   .attr('y', function (d) {
+     return h-yScale(d);
+   })
+   .attr('x', function (d, i) {
+     return xScale(i);
+   })
+   .attr('width', xScale.bandwidth())
+   .attr('height', function (d) {
+     return yScale(d)+5;
+   });
+
+   var txt = svg.selectAll('text').data(dataset);
+
+   txt.enter()
+   .append('text')
+   .text(function (d) {
+     return Math.round(yScale(d));
+   })
+   .attr('x', function (d, i) {
+     return w + (xScale.bandwidth()/2);
+   })
+   .attr('y', function (d) {
+     return (h-yScale(d))+15;
+   })
+   .attr('font-family', 'sans-serif')
+   .attr('font-size', '10px')
+   .attr('fill', '#fafafa')
+   .attr('text-anchor', 'middle')
+  .merge(txt)
+   .transition()
+   .duration(1000)
+   .ease(d3.easeElasticOut)
+   .text(function (d) {
+     return Math.round(yScale(d));
+   })
+   .attr('x', function (d, i) {
+     return xScale(i) + (xScale.bandwidth()/2);
+   })
+   .attr('y', function (d) {
+     return (h-yScale(d))+15;
+   });
+
+   svg.select('.y-axis')
+   .transition()
+   .duration(1000)
+   .call(yAxis);
+
+ });
