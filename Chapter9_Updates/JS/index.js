@@ -78,9 +78,10 @@ svg.selectAll('text')
     .attr('font-family', 'sans-serif')
     .attr('font-size', '10px')
     .attr('fill', '#fafafa')
-    .attr('text-anchor', 'middle');
+    .attr('text-anchor', 'middle')
+    .attr('class', 'bar_txt')
 
-svg.append('g')
+  svg.append('g')
   .attr('class', 'axis')
   .attr('transform', 'translate('+(0)+',0)')
   .call(yAxis);
@@ -145,6 +146,7 @@ d3.select('p')
 
   });
 */
+
 d3.select('button')
   .on('click', function () {
 
@@ -186,7 +188,7 @@ d3.select('button')
      return yScale(d)+5;
    });
 
-   var txt = svg.selectAll('text').data(dataset);
+   var txt = svg.selectAll('.bar_txt').data(dataset);
 
    txt.enter()
    .append('text')
@@ -203,6 +205,7 @@ d3.select('button')
    .attr('font-size', '10px')
    .attr('fill', '#fafafa')
    .attr('text-anchor', 'middle')
+   .attr('class', 'bar_txt')
   .merge(txt)
    .transition()
    .duration(1000)
