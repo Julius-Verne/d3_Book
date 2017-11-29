@@ -7,8 +7,7 @@
   stroke: red;
   stroke-dasharray: 2, 3;
 }
-.dangerLine{
-  fill:none;
-  stroke: red;
+.danger{
+  fill: red;
   stroke-width: 0.7;
 }

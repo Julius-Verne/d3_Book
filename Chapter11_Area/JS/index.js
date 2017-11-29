@@ -65,19 +65,30 @@ var xAxis, yAxis;
 
 
   //Draw a line
-  var line = d3.line()
+  var area = d3.area()
      .defined(function (d) {
-       return d.average >= 0 && d.average <= 350;
+       return d.average >= 0 && d.average <=350;
      })
     .x(function(d) { return xScale(d.date); })
-    .y(function(d) { return yScale(d.average); });
+    .y0(function(d) { return yScale.range()[0]; })
+    .y1(function(d) { return yScale(d.average); });
 
-    var dangerLine = d3.line()
+    var dangerArea = d3.area()
        .defined(function (d) {
          return d.average >= 350;
        })
       .x(function(d) { return xScale(d.date); })
-      .y(function(d) { return yScale(d.average); });
+      .y0(function(d) { return yScale.range()[0]; })
+      .y1(function(d) { return yScale(d.average); });
+
+    svg.append('path')
+      .datum(dataset)
+      .attr('d', area);
+
+      svg.append('path')
+        .datum(dataset)
+        .attr('class', 'danger')
+        .attr('d', dangerArea);
 
     //Draw 350 ppm line
     svg.append("line")
@@ -87,16 +98,6 @@ var xAxis, yAxis;
       .attr("y1", yScale(350))
       .attr("y2", yScale(350));
 
-
-  svg.append('path')
-    .datum(dataset)
-    .attr('class', 'line')
-    .attr('d', line);
-
-    svg.append('path')
-      .datum(dataset)
-      .attr('class', 'dangerLine')
-      .attr('d', dangerLine);
 
     svg.append('g')
        .attr('class', 'axis')
